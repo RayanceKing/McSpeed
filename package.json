@@ -1,6 +1,7 @@
 {
   "name": "mcspeed",
   "private": true,
+  "license": "MIT",
   "version": "2.0.0",
   "type": "module",
   "description": "本地加速代理管理工具：hosts + Caddy + mkcert → Cloudflare Worker",

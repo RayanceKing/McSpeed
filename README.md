@@ -101,3 +101,8 @@ curl.exe -s -D - -o NUL https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.
 - 自检走 `no_proxy` 直连。如果系统设了强制代理，可能绕过 hosts。
 - 证书有效期到 2029-01-22，过期后点「重新签发证书」。
 - `fabricmc.net` 整站代理收益有限，主要是官网页面；真正有用的是 `maven.fabricmc.net` 和 `meta.fabricmc.net`。
+
+## 许可证
+
+[MIT](LICENSE)。可自由使用、修改、分发，包括商业用途，保留版权声明即可；软件按「原样」提供，不附带任何担保。
+
