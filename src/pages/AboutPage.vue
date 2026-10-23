@@ -41,7 +41,7 @@ const links = [
     label: "Cloudflare",
     url: "https://www.cloudflare.com/",
     icon: "mc-world",
-    hint: "FabricProxy 部署的边缘平台",
+    hint: "MC Proxy 部署的边缘平台",
   },
 ];
 

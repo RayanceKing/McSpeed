@@ -69,10 +69,10 @@ function startupBlocker(): string | null {
   const s = props.status;
   if (!s) return "组件状态尚未读取完成，请稍候再试。";
   if (!s.caddy_installed) {
-    return `找不到 caddy.exe，请确认 FabricProxy\\local\\caddy\\ 目录完整。\n\n期望路径：\n${s.caddyfile_path.replace(/Caddyfile$/, "caddy\\caddy.exe")}`;
+    return `找不到 caddy.exe，请确认 MCProxy\\local\\caddy\\ 目录完整。\n\n期望路径：\n${s.caddyfile_path.replace(/Caddyfile$/, "caddy\\caddy.exe")}`;
   }
   if (!s.mkcert_installed) {
-    return "找不到 mkcert.exe，无法签发本地证书。请确认 FabricProxy\\local\\mkcert.exe 存在。";
+    return "找不到 mkcert.exe，无法签发本地证书。请确认 MCProxy\\local\\mkcert.exe 存在。";
   }
   return null;
 }

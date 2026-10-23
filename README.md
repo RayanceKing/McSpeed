@@ -16,7 +16,7 @@ Cloudflare Worker（mcproxy.unmod.online）
 maven.fabricmc.net
 ```
 
-配套的 Worker 项目在 [../FabricProxy](../FabricProxy)，只开放 Fabric 三条路由。
+配套的 Worker 项目在 [../MCProxy](../MCProxy)，只开放 Fabric 三条路由。
 
 ## 功能
 
@@ -33,7 +33,7 @@ maven.fabricmc.net
 
 - Node 20+
 - Rust 1.77+
-- 同级目录存在 `FabricProxy/local/`，内含 `caddy.exe`、`mkcert.exe`、`Caddyfile`
+- 同级目录存在 `MCProxy/local/`，内含 `caddy.exe`、`mkcert.exe`、`Caddyfile`
 - 管理员权限（写 hosts、装 CA、占 443 都需要）
 
 ## 开发
@@ -92,7 +92,7 @@ MCSpeed/
 curl.exe -s -D - -o NUL https://maven.fabricmc.net/net/fabricmc/fabric-loader/0.15.0/fabric-loader-0.15.0.jar
 ```
 
-响应头里应看到 `x-local-proxy: FabricProxy/Caddy` 和 `x-proxy-route: /fabric-maven`。前者证明走了本地 Caddy，后者证明 Worker 正确识别了路由。
+响应头里应看到 `x-local-proxy: MCProxy/Caddy` 和 `x-proxy-route: /fabric-maven`。前者证明走了本地 Caddy，后者证明 Worker 正确识别了路由。
 
 ## 已知限制
 
