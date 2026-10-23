@@ -1,0 +1,20 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "主窗口权限：窗口控制（自绘标题栏需要拖拽与最小化/最大化/关闭）+ 各插件",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-is-maximized",
+    "core:app:default",
+    "opener:default",
+    "dialog:default",
+    "process:default",
+    "clipboard-manager:default",
+    "mcp-bridge:default"
+  ]
+}

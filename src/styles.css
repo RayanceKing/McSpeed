@@ -1,0 +1,104 @@
+/*
+ * 全局样式。
+ *
+ * 三个目标：
+ * 1. 干掉 WebView2 默认白底，避免无边框窗口四边露白。
+ * 2. 让 mc-layout / mc-main 铺满窗口，不被库默认的占位与内边距挤窄。
+ * 3. 收窄 mc-scroll-view / mc-container 的左右留白。
+ *    库的 panel(14px) + scroll-view(22px) + container(12px) 三层叠加，
+ *    页面两侧会空出一大块，这里统一成一个值。
+ */
+
+:root {
+  --titlebar-height: 40px;
+  --page-gutter: 16px;
+  --mc-spacer: 4px;
+  /* 与 Rust 端 window_background_color() 保持一致，避免边缘色差 */
+  --app-bg: #1c1c1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* WebView2 默认白底，不显式覆盖会在无边框窗口边缘露出白边 */
+  background: var(--app-bg);
+  color: #f2f2f2;
+  font-family: "Minecraft Ten", system-ui, -apple-system, "Segoe UI", sans-serif;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+}
+
+/* mc-app 是布局根节点 */
+/*
+ * 布局骨架由 App.vue 的 .shell 负责：标题栏占一行，
+ * 下面是侧边栏 + 内容区的横向 flex。
+ */
+.mc-app {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+}
+
+/*
+ * mc-scroll-view 的容器带 22px 左右 padding，收紧到统一值。
+ */
+.mc-scroll-view {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.mc-scroll-view > .mc-scroll-view__container {
+  padding-inline: var(--page-gutter);
+  padding-block: 12px;
+  height: 100%;
+  width: 100%;
+}
+
+.mc-scroll-view__content {
+  width: 100%;
+  min-width: 0;
+}
+
+/* 滚动条占位默认 22px，会挤掉内容宽度 */
+.mc-scroll-view__scrollbar {
+  width: var(--page-gutter);
+}
+
+/*
+ * mc-container 在 960px 断点下 max-width: 720px 且居中，
+ * 两侧会露出大片底色。强制铺满。
+ */
+.mc-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-inline: 0 !important;
+  margin-inline: 0 !important;
+}
+
+/* 卡片与列表间距 */
+.mc-card {
+  margin-bottom: 12px;
+}
+
+.mc-list {
+  padding: 0;
+}

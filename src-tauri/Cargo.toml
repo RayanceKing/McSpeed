@@ -1,0 +1,33 @@
+[package]
+name = "mcspeed"
+version = "2.0.0"
+description = "本地 Fabric 加速代理管理工具"
+authors = ["McSpeed"]
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "mcspeed_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["unstable"] }
+tauri-plugin-opener = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-process = "2"
+tauri-plugin-clipboard-manager = "2"
+tauri-plugin-mcp-bridge = "0.13"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json"] }
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
