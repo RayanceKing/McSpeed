@@ -22,7 +22,7 @@ function onButtonDown(event: MouseEvent) {
   <div class="titlebar" @pointerdown="onPointerDown">
     <div class="titlebar__brand">
       <img class="titlebar__logo" src="../assets/logo.png" alt="" width="20" height="20" />
-      <span class="titlebar__name">McSpeed</span>
+      <span class="titlebar__name">MC Speed</span>
       <span class="titlebar__tag">本地加速代理</span>
     </div>
 

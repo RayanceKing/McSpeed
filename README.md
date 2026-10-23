@@ -1,8 +1,8 @@
-# McSpeed
+# MC Speed
 
 本地加速代理的管理工具。
 
-`maven.fabricmc.net` 等域名在国内直连经常只有几十 KB/s，瓶颈在跨境线路而不是 DNS。McSpeed 的做法是**把域名劫持到本机，用本地 Caddy 接管，再转发到部署在 Cloudflare 边缘的 Worker**：
+`maven.fabricmc.net` 等域名在国内直连经常只有几十 KB/s，瓶颈在跨境线路而不是 DNS。MC Speed 的做法是**把域名劫持到本机，用本地 Caddy 接管，再转发到部署在 Cloudflare 边缘的 Worker**：
 
 ```
 Gradle / 启动器
@@ -23,7 +23,7 @@ maven.fabricmc.net
 - **一键配置**：签发本地证书 → 写入 hosts → 启动 Caddy，一条命令拉通整条链路。
 - **分步操作**：证书、hosts、Caddy 的启动/停止/热加载都可单独执行。
 - **连通性自检**：对三个域名发真实请求，通过 `X-Local-Proxy` 与 `X-Proxy-Route` 响应头确认请求确实经过了本地 Caddy 和 Worker，顺带测出 Worker 所在节点。
-- **hosts 管理**：只操作带 `# McSpeed managed` 标记的块，写入前自动备份，不影响你自己的 hosts 内容。
+- **hosts 管理**：只操作带 `# MC Speed managed` 标记的块，写入前自动备份，不影响你自己的 hosts 内容。
 
 ## 界面
 
@@ -62,7 +62,7 @@ npx vue-tsc --noEmit   # 前端类型检查
 ## 目录结构
 
 ```
-McSpeed/
+MCSpeed/
   src/
     main.ts        Vue 入口，注册 mcui-oreui 插件
     App.vue        主界面：状态、操作、域名表、自检、hosts 记录

@@ -2,7 +2,7 @@
 name = "mcspeed"
 version = "2.0.0"
 description = "本地 Fabric 加速代理管理工具"
-authors = ["McSpeed"]
+authors = ["MC Speed"]
 edition = "2021"
 rust-version = "1.77"
 

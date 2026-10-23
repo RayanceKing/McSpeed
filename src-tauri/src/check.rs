@@ -74,7 +74,7 @@ async fn check_domain(domain: &str) -> CheckResult {
 
     let response = match client
         .get(format!("https://{}/", domain))
-        .header("User-Agent", "McSpeed/2.0")
+        .header("User-Agent", "MCSpeed/2.0")
         .send()
         .await
     {
@@ -107,7 +107,7 @@ async fn check_domain(domain: &str) -> CheckResult {
     let via_local = headers
         .get("x-local-proxy")
         .and_then(|v| v.to_str().ok())
-        .map(|v| v.contains("FabricProxy/Caddy"))
+        .map(|v| v.contains("MCProxy/Caddy"))
         .unwrap_or(false);
 
     if !via_local {

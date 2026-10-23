@@ -17,7 +17,7 @@ pub fn render(rules: &[ProxyRule], log_path: &Path) -> String {
 
     let mut out = String::with_capacity(4096);
 
-    out.push_str("# 本文件由 McSpeed 自动生成，请勿手工修改。\n");
+    out.push_str("# 本文件由 MC Speed 自动生成，请勿手工修改。\n");
     out.push_str("# 规则变化后会重新生成并热加载。\n\n");
 
     out.push_str("{\n");
@@ -36,7 +36,7 @@ pub fn render(rules: &[ProxyRule], log_path: &Path) -> String {
     out.push_str(&format!("\t\t\ttls_server_name {}\n", host_of(UPSTREAM)));
     out.push_str("\t\t}\n");
     out.push_str("\t}\n\n");
-    out.push_str("\theader X-Local-Proxy \"FabricProxy/Caddy\"\n\n");
+    out.push_str("\theader X-Local-Proxy \"MCProxy/Caddy\"\n\n");
     push_log(&mut out, &log);
     out.push_str("}\n\n");
 
@@ -99,10 +99,10 @@ pub fn render(rules: &[ProxyRule], log_path: &Path) -> String {
 
         // 所有规则都没命中时给出可读的 404，而不是 Caddy 默认的空响应
         out.push_str("\thandle {\n");
-        out.push_str("\t\trespond \"McSpeed: 没有规则命中该请求\" 404\n");
+        out.push_str("\t\trespond \"MC Speed: 没有规则命中该请求\" 404\n");
         out.push_str("\t}\n\n");
 
-        out.push_str("\theader X-Local-Proxy \"FabricProxy/Caddy\"\n\n");
+        out.push_str("\theader X-Local-Proxy \"MCProxy/Caddy\"\n\n");
         push_log(&mut out, &log);
         out.push_str("}\n\n");
     }

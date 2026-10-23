@@ -189,7 +189,7 @@ async function onCheck() {
       danger
       @confirm="onUninstallConfirmed"
     >
-      将把 mkcert 的根证书从系统信任库中移除，本机不再信任 McSpeed 签发的证书。
+      将把 mkcert 的根证书从系统信任库中移除，本机不再信任 MC Speed 签发的证书。
 
       磁盘上的 CA 与域名证书文件会保留，之后点「重新签发」即可自动装回并恢复信任。
       Caddy 若仍在运行，卸载后客户端访问 Fabric 域名会提示证书不受信任。

@@ -791,7 +791,7 @@ async function exportToClipboard() {
       <div v-if="ioTab === 'import' && pendingImport === null" class="form">
         <p class="hint">
           导入完整配置（规则、顺序、测速结果一并生效），将整体替换当前规则。
-          支持 McSpeed 导出的 JSON，也兼容只含 rules 列表的配置。
+          支持 MC Speed 导出的 JSON，也兼容只含 rules 列表的配置。
         </p>
         <mc-button icon="mc-folder-open" :disabled="ioBusy" :loading="ioBusy" @click="importFromFile">从文件导入…</mc-button>
         <mc-button icon="mc-clipboard" :disabled="ioBusy" @click="importFromClipboard">从剪贴板导入</mc-button>

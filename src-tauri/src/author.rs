@@ -185,7 +185,7 @@ async fn fetch_github(client: &reqwest::Client, url: &str) -> Result<GitHubUser,
     // GitHub API 不带 User-Agent 会 403
     let text = client
         .get(url)
-        .header("User-Agent", "McSpeed")
+        .header("User-Agent", "MCSpeed")
         .header("Accept", "application/vnd.github+json")
         .send()
         .await
@@ -203,7 +203,7 @@ async fn fetch_github(client: &reqwest::Client, url: &str) -> Result<GitHubUser,
 async fn fetch_avatar(client: &reqwest::Client, url: &str) -> Result<String, String> {
     let bytes = client
         .get(url)
-        .header("User-Agent", "McSpeed")
+        .header("User-Agent", "MCSpeed")
         .send()
         .await
         .map_err(|e| format!("请求头像失败：{}", e))?

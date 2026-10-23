@@ -1,4 +1,4 @@
-use crate::config::{LOOPBACK_V4, LOOPBACK_V6, MARKER};
+use crate::config::{LEGACY_MARKERS, LOOPBACK_V4, LOOPBACK_V6, MARKER};
 use serde::Serialize;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -30,9 +30,14 @@ pub struct HostsApplyResult {
     pub backup_path: Option<String>,
 }
 
-/// 判断一行是否为 McSpeed 标记行。
+/// 判断一行是否为 MC Speed 标记行。
 pub fn is_managed_line(line: &str) -> bool {
-    line.contains(MARKER)
+    line.contains(MARKER) || LEGACY_MARKERS.iter().any(|m| line.contains(m))
+}
+
+/// 判断注释文本是否由本工具写入（兼容改名前的旧标记）。
+fn is_managed_comment(comment: &str) -> bool {
+    comment.starts_with("MC Speed") || comment.starts_with("McSpeed")
 }
 
 /// 解析单行。非记录行返回 None。
@@ -63,7 +68,7 @@ pub fn parse_line(line: &str) -> Option<HostsEntry> {
 
     let managed = comment
         .as_deref()
-        .map(|c| c.starts_with("McSpeed"))
+        .map(is_managed_comment)
         .unwrap_or(false);
 
     Some(HostsEntry {

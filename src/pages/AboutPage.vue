@@ -65,15 +65,15 @@ function onLinkChange(value: string | number | Array<string | number>) {
       <template #title>
         <span class="card-title">
           <mc-icon name="mc-information" :size="16" class="card-icon" />
-          关于 McSpeed
+          关于 MC Speed
           <HelpTip text="本地加速代理的管理工具。界面基于 Tauri + Vue 3，视觉使用 mcui-oreui 组件库。" />
         </span>
       </template>
       <template #text>
         <div class="brand">
-          <img class="brand__logo" src="../assets/logo.png" alt="McSpeed" width="96" height="96" />
+          <img class="brand__logo" src="../assets/logo.png" alt="MC Speed" width="96" height="96" />
           <div class="brand__meta">
-            <span class="brand__name">McSpeed</span>
+            <span class="brand__name">MC Speed</span>
             <span class="brand__tagline">本地加速代理管理工具</span>
           </div>
         </div>

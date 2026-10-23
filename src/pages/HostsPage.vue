@@ -41,7 +41,7 @@ async function onRemove() {
     showDialog(
       result.removed.length === 0 ? "没有记录" : "hosts 记录已删除",
       result.removed.length === 0
-        ? "hosts 中没有 McSpeed 管理的条目。"
+        ? "hosts 中没有 MC Speed 管理的条目。"
         : `已删除 ${result.removed.length} 条记录。原文件已备份到：\n${result.backup_path ?? "（无备份）"}`,
       "知道了"
     );
@@ -68,7 +68,7 @@ async function onOpenFolder() {
         <span class="card-title">
           <mc-icon name="mc-clipboard" :size="16" class="card-icon" />
           hosts 管理
-          <HelpTip text="只操作带 # McSpeed managed 标记的行块，你自己的 hosts 内容不会被碰。每次写入前自动备份到 hosts.mcspeed.bak，出问题把备份内容粘回去即可。" />
+          <HelpTip text="只操作带 # MC Speed managed 标记的行块，你自己的 hosts 内容不会被碰。每次写入前自动备份到 hosts.mcspeed.bak，出问题把备份内容粘回去即可。" />
         </span>
       </template>
       <template #text>
@@ -85,12 +85,12 @@ async function onOpenFolder() {
         <span class="card-title">
           <mc-icon name="mc-list" :size="16" class="card-icon" />
           当前记录（{{ status?.managed_entries.length ?? 0 }}）
-          <HelpTip text="hosts 里当前由 McSpeed 管理的条目。每个启用的域名占两条：一条 IPv4、一条 IPv6，都指向 127.0.0.1 或 ::1。" />
+          <HelpTip text="hosts 里当前由 MC Speed 管理的条目。每个启用的域名占两条：一条 IPv4、一条 IPv6，都指向 127.0.0.1 或 ::1。" />
         </span>
       </template>
       <template #text>
         <p v-if="(status?.managed_entries.length ?? 0) === 0" class="hint">
-          hosts 中没有 McSpeed 管理的条目。
+          hosts 中没有 MC Speed 管理的条目。
         </p>
         <mc-list v-else>
           <mc-list-item

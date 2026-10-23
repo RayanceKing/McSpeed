@@ -12,7 +12,11 @@ pub const CADDY_ADMIN: &str = "http://localhost:2019";
 pub const LISTEN_PORT: u16 = 443;
 
 /// hosts 标记注释。
-pub const MARKER: &str = "# McSpeed managed";
+pub const MARKER: &str = "# MC Speed managed";
+
+/// 旧版本写进 hosts 的标记。读的时候一并识别，
+/// 否则改名后旧的托管条目会被当成用户自己的内容，清理不掉也认不出来。
+pub const LEGACY_MARKERS: &[&str] = &["# McSpeed managed"];
 
 /// 本机环回地址。IPv4 与 IPv6 都写，避免只解析到 v6 时失配。
 pub const LOOPBACK_V4: &str = "127.0.0.1";
@@ -464,6 +468,9 @@ pub fn sort_groups_by_probe(rules: &mut [ProxyRule], keys: &std::collections::Ha
 }
 
 /// 设置文件路径：`%LOCALAPPDATA%\McSpeed\settings.json`。
+///
+/// 目录名沿用改名前的 `McSpeed`，为的是让已有安装的设置原样读得到。
+/// 想彻底换名需要先做一次迁移（读到旧目录则复制到新目录），否则用户配置会丢。
 pub fn settings_path() -> PathBuf {
     let base = std::env::var("LOCALAPPDATA")
         .map(PathBuf::from)

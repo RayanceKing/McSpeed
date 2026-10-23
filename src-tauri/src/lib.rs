@@ -575,7 +575,7 @@ pub fn run() {
             use tauri::WebviewWindowBuilder;
 
             let mut builder = WebviewWindowBuilder::new(app, "main", WebviewUrl::App("index.html".into()))
-                .title("McSpeed")
+                .title("MC Speed")
                 .inner_size(960.0, 780.0)
                 .min_inner_size(760.0, 640.0)
                 .decorations(false)

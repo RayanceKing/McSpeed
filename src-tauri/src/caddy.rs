@@ -6,12 +6,12 @@ use std::path::PathBuf;
 use std::process::{Command, Stdio};
 use std::time::{Duration, Instant};
 
-/// 工程根目录。从当前 exe 位置向上找含 FabricProxy\local 的目录。
+/// 工程根目录。从当前 exe 位置向上找含 MCProxy\local 的目录。
 pub fn project_root() -> PathBuf {
     if let Ok(exe) = std::env::current_exe() {
         let mut dir = exe.parent().map(PathBuf::from);
         while let Some(current) = dir {
-            if current.join("FabricProxy").join("local").is_dir() {
+            if current.join("MCProxy").join("local").is_dir() {
                 return current;
             }
             dir = current.parent().map(PathBuf::from);
@@ -22,7 +22,7 @@ pub fn project_root() -> PathBuf {
 
 pub fn caddy_path() -> PathBuf {
     project_root()
-        .join("FabricProxy")
+        .join("MCProxy")
         .join("local")
         .join("caddy")
         .join("caddy.exe")
@@ -30,21 +30,21 @@ pub fn caddy_path() -> PathBuf {
 
 pub fn mkcert_path() -> PathBuf {
     project_root()
-        .join("FabricProxy")
+        .join("MCProxy")
         .join("local")
         .join("mkcert.exe")
 }
 
 pub fn caddyfile_path() -> PathBuf {
     project_root()
-        .join("FabricProxy")
+        .join("MCProxy")
         .join("local")
         .join("Caddyfile")
 }
 
 pub fn cert_dir() -> PathBuf {
     project_root()
-        .join("FabricProxy")
+        .join("MCProxy")
         .join("local")
         .join("certs")
 }
@@ -59,7 +59,7 @@ pub fn cert_key_file() -> PathBuf {
 
 pub fn access_log_path() -> PathBuf {
     project_root()
-        .join("FabricProxy")
+        .join("MCProxy")
         .join("local")
         .join("caddy-access.log")
 }
